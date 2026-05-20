@@ -1,4 +1,4 @@
-# 🌡️ Forecasting Climático — Séries Temporais
+# Forecasting Climático — Séries Temporais
 
 **Seminário — Tema 6 · Análise de Dados com Machine Learning**  
 Cesar School · Disciplina: Análise e Visualização de Dados
