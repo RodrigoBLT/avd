@@ -4,7 +4,7 @@ from utils.helpers import bloco
 
 
 def render():
-    st.title("📖 Conclusão & Storytelling")
+    st.title("Conclusão & Storytelling")
 
     st.markdown("""
     <div class='hero'>
@@ -65,11 +65,46 @@ def render():
     bloco(
         "• Usar o <b>Prophet</b> como modelo principal, retreinado mensalmente com novos dados.<br>"
         "• Considerar previsões de <b>até 6 meses</b> como operacionalmente confiáveis.<br>"
-        "• Integrar a previsões a sistemas de planejamento de demanda energética, logística ou agronegócio.<br>"
+        "• Integrar as previsões a sistemas de planejamento de demanda energética, logística ou agronegócio.<br>"
         "• Monitorar continuamente o <b>desvio entre real e previsto</b> (MAE rolling) para detectar deriva.<br><br>"
         "📊 <b>Resultado esperado:</b> redução de 15–30% nos erros de planejamento operacional relacionados a variações climáticas.",
         "ok",
     )
+
+    # ── Referências Bibliográficas ───────────────────────────
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.subheader("Referências Bibliográficas")
+
+    refs = [
+        ("Forecasting: Principles and Practice — Rob J. Hyndman & George Athanasopoulos",
+         "Disponível gratuitamente em otexts.com/fpp3"),
+        ("Mãos à Obra: Aprendizado de Máquina com Scikit-Learn, Keras & TensorFlow — Aurélien Géron (O'Reilly)",
+         "Referência geral para todos os grupos da disciplina"),
+        ("Dataset",
+         "Weather History — Kaggle",
+         "kaggle.com/datasets/muthuj7/weather-dataset"),
+        ("Modelo",
+         "Facebook Prophet Documentation",
+         "facebook.github.io/prophet"),
+        ("Visualização",
+         "Interactive Time Series with Plotly",
+         "plotly.com/python/time-series"),
+        ("Biblioteca",
+         "Scikit-Learn User Guide — statsmodels ARIMA & SARIMA",
+         "statsmodels.org · sklearn.org/stable/user_guide.html"),
+    ]
+
+    for icone_titulo, ref, detalhe in refs:
+        st.markdown(
+            f"<div style='padding:10px 14px; margin-bottom:6px; border-radius:8px;"
+            f"background:var(--background-secondary, #1a1e2e); border:0.5px solid #2a2d3a;'>"
+            f"<div style='font-size:12px; color:#666; text-transform:uppercase; "
+            f"letter-spacing:.05em; margin-bottom:3px;'>{icone_titulo}</div>"
+            f"<div style='font-size:13.5px; color:white; font-weight:500;'>{ref}</div>"
+            f"<div style='font-size:12px; color:#888; margin-top:2px;'>{detalhe}</div>"
+            f"</div>",
+            unsafe_allow_html=True,
+        )
 
     st.markdown("""
     <div style='text-align:center;color:#333;font-size:0.78rem;padding:24px 0 8px'>

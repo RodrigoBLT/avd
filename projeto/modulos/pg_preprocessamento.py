@@ -8,7 +8,7 @@ from utils.helpers import nova_fig, estilo_ax, bloco, secao
 
 
 def render(df_diario, df_mensal):
-    st.title("🔧 Pré-processamento e Decomposição")
+    st.title("Pré-processamento e Decomposição")
 
     secao("Tratamento de Nulos")
     nulos    = df_diario.isnull().sum()
@@ -117,8 +117,8 @@ def render(df_diario, df_mensal):
 
     c1, c2, c3 = st.columns(3)
     c1.metric("Total",     f"{len(df_mensal)} meses")
-    c2.metric("🟦 Treino", f"{len(tr)} meses ({prop*100:.0f}%)")
-    c3.metric("🟥 Teste",  f"{len(te)} meses ({(1-prop)*100:.0f}%)")
+    c2.metric("Treino", f"{len(tr)} meses ({prop*100:.0f}%)")
+    c3.metric("Teste",  f"{len(te)} meses ({(1-prop)*100:.0f}%)")
 
     fig, ax = nova_fig(14, 3.5)
     ax.plot(tr.index, tr.values, color=CORES["primaria"], linewidth=1.2, label="Treino")

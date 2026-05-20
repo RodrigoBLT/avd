@@ -10,7 +10,7 @@ from utils.helpers import nova_fig, estilo_ax, bloco, cards_metricas, calcular_m
 
 
 def render(treino, teste):
-    st.title("🤖 Treinamento dos Modelos")
+    st.title("Treinamento dos Modelos")
 
     tab1, tab2, tab3, tab4 = st.tabs(["ARIMA", "SARIMA", "Prophet", "Comparação"])
 
@@ -36,6 +36,13 @@ def render(treino, teste):
         cards_metricas(calcular_metricas(teste.values, prev.values), f"ARIMA({p},{d},{q})")
         _plot_previsao(treino, teste, {"ARIMA": (prev, bi, bs)}, f"ARIMA({p},{d},{q}) — Previsão vs Real")
 
+        # ── Critério AIC ────────────────────────────────────
+        bloco(
+            f"<b>Critério de Informação AIC:</b> {mod.aic:.2f} — "
+            f"quanto menor o AIC, melhor o equilíbrio entre precisão e complexidade do modelo. "
+            f"Use os sliders acima para comparar configurações: o AIC vai atualizar automaticamente."
+        )
+
     with tab2:
         st.header("SARIMA")
         bloco(
@@ -55,6 +62,14 @@ def render(treino, teste):
 
         cards_metricas(calcular_metricas(teste.values, prev.values), f"SARIMA({sp},{sd},{sq})×({sP},{sD},{sQ},12)")
         _plot_previsao(treino, teste, {"SARIMA": (prev, bi, bs)}, "SARIMA — Previsão vs Real")
+
+        # ── Critério AIC ────────────────────────────────────
+        bloco(
+            f"<b>Critério de Informação AIC:</b> {mod.aic:.2f} — "
+            f"o componente sazonal (P,D,Q,12) adiciona parâmetros ao modelo; "
+            f"o AIC penaliza a complexidade e indica se o ganho de precisão justifica o custo. "
+            f"Compare com o AIC do ARIMA: se for menor, o SARIMA é a escolha mais eficiente."
+        )
 
     with tab3:
         st.header("Facebook Prophet")
@@ -115,11 +130,27 @@ def render(treino, teste):
             "MAE (°C)":  [met_a["MAE"],  met_s["MAE"],  met_p["MAE"]],
             "RMSE (°C)": [met_a["RMSE"], met_s["RMSE"], met_p["RMSE"]],
             "MAPE (%)":  [met_a["MAPE"], met_s["MAPE"], met_p["MAPE"]],
+            "AIC":       [round(ma.aic, 2), round(ms.aic, 2), "—"],
         }).round(3)
 
         st.dataframe(
             df_comp.style.highlight_min(subset=["MAE (°C)", "RMSE (°C)", "MAPE (%)"], color="#1a3a2a"),
             use_container_width=True,
+        )
+
+        # ── Interpretação da comparação ──────────────────────
+        maes   = [met_a["MAE"], met_s["MAE"], met_p["MAE"]]
+        nomes  = ["ARIMA", "SARIMA", "Prophet"]
+        melhor = nomes[int(np.argmin(maes))]
+        mae_m  = min(maes)
+        bloco(
+            f"<b>Vencedor: {melhor}</b> com MAE de {mae_m:.2f}°C. "
+            f"Na prática, errar {mae_m:.2f}°C por mês em temperatura significa que "
+            f"distribuidoras de energia podem dimensionar capacidade com <b>margem de erro reduzida</b>, "
+            f"transportadoras conseguem <b>antecipar janelas operacionais</b> com mais segurança "
+            f"e produtores rurais podem <b>planejar safras</b> com previsões confiáveis de até 6 meses. "
+            f"Parâmetros ARIMA/SARIMA selecionados via ACF/PACF e confirmados pelo menor AIC.",
+            "ok",
         )
 
         fig, axes = plt.subplots(1, 3, figsize=(14, 4))
