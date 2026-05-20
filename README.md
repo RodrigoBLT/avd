@@ -1,11 +1,5 @@
 # Forecasting Climático — Séries Temporais
-
-**Seminário — Tema 6 · Análise de Dados com Machine Learning**  
-Cesar School · Disciplina: Análise e Visualização de Dados
-
-> Previsão de temperatura com ARIMA, SARIMA e Facebook Prophet, com dashboard interativo e princípios de Gestalt aplicados à visualização.
-
----
+Previsão de temperatura com ARIMA, SARIMA e Facebook Prophet, com dashboard interativo e princípios de Gestalt aplicados à visualização.
 
 ## Estrutura do Projeto
 
