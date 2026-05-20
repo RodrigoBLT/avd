@@ -76,22 +76,20 @@ def render():
     st.subheader("Referências Bibliográficas")
 
     refs = [
-        ("📗 Livro do Tema 6 (principal)",
-         "Forecasting: Principles and Practice — Rob J. Hyndman & George Athanasopoulos",
+        ("Forecasting: Principles and Practice — Rob J. Hyndman & George Athanasopoulos",
          "Disponível gratuitamente em otexts.com/fpp3"),
-        ("📘 Livro Geral (obrigatório)",
-         "Mãos à Obra: Aprendizado de Máquina com Scikit-Learn, Keras & TensorFlow — Aurélien Géron (O'Reilly)",
+        ("Mãos à Obra: Aprendizado de Máquina com Scikit-Learn, Keras & TensorFlow — Aurélien Géron (O'Reilly)",
          "Referência geral para todos os grupos da disciplina"),
-        ("🔗 Dataset",
+        ("Dataset",
          "Weather History — Kaggle",
          "kaggle.com/datasets/muthuj7/weather-dataset"),
-        ("🔗 Modelo",
+        ("Modelo",
          "Facebook Prophet Documentation",
          "facebook.github.io/prophet"),
-        ("🔗 Visualização",
+        ("Visualização",
          "Interactive Time Series with Plotly",
          "plotly.com/python/time-series"),
-        ("🔗 Biblioteca",
+        ("Biblioteca",
          "Scikit-Learn User Guide — statsmodels ARIMA & SARIMA",
          "statsmodels.org · sklearn.org/stable/user_guide.html"),
     ]

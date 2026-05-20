@@ -1,6 +1,3 @@
-"""
-Carregamento e pré-processamento do dataset meteorológico.
-"""
 import pandas as pd
 import streamlit as st
 

@@ -7,7 +7,7 @@ from utils.helpers import nova_fig, estilo_ax, bloco
 
 
 def render(df_mensal):
-    st.title("🔮 Forecasting do Futuro")
+    st.title("Forecasting do Futuro")
 
     bloco(
         "<b>Entrega final do modelo.</b> O Prophet é treinado com <b>todos os dados históricos</b> "

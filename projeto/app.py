@@ -1,5 +1,3 @@
-
-
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -71,7 +69,7 @@ try:
         pg_dashboard.render(df_diario, df_mensal, treino, teste)
 
 except FileNotFoundError:
-    st.error("❌ Arquivo 'weatherHistory.csv' não encontrado!")
+    st.error("Arquivo 'weatherHistory.csv' não encontrado!")
     st.markdown("""
     **Para continuar:**
     1. Acesse: https://www.kaggle.com/datasets/muthuj7/weather-dataset

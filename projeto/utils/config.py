@@ -1,7 +1,3 @@
-"""
-Configurações globais: paleta de cores, layout Plotly/Matplotlib e CSS do app.
-"""
-
 CORES = {
     "primaria":   "#00c8ff",
     "secundaria": "#ffaa00",
